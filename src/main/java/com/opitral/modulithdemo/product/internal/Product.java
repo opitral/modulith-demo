@@ -1,4 +1,4 @@
-package com.opitral.modulithdemo.models;
+package com.opitral.modulithdemo.product.internal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

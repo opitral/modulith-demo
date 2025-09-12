@@ -1,7 +1,7 @@
-package com.opitral.modulithdemo.controllers;
+package com.opitral.modulithdemo.api;
 
-import com.opitral.modulithdemo.models.Payment;
-import com.opitral.modulithdemo.services.PaymentService;
+import com.opitral.modulithdemo.payment.api.PaymentApi;
+import com.opitral.modulithdemo.payment.internal.Payment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/payments")
 @RequiredArgsConstructor
-public class PaymentController {
-    private final PaymentService service;
+public class PaymentHttp {
+    private final PaymentApi paymentApi;
     @GetMapping
-    public List<Payment> all() { return service.findAll(); }
+    public List<Payment> all() { return paymentApi.all(); }
 }

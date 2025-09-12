@@ -1,5 +1,6 @@
-package com.opitral.modulithdemo.models;
+package com.opitral.modulithdemo.payment.internal;
 
+import com.opitral.modulithdemo.order.internal.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

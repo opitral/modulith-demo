@@ -1,5 +1,6 @@
-package com.opitral.modulithdemo.models;
+package com.opitral.modulithdemo.order.internal;
 
+import com.opitral.modulithdemo.product.internal.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
