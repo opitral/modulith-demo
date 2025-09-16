@@ -12,5 +12,7 @@ class ProductService implements ProductApi {
     private final ProductRepository repo;
     public List<Product> all() { return repo.findAll(); }
     public Product create(Product p) { return repo.save(p); }
-    public Product get(Integer id) { return repo.findById(id).orElseThrow(); }
+    public Product get(Integer id) {
+        return repo.findById(id).orElseThrow(() -> new IllegalArgumentException("No product with id " + id));
+    }
 }
