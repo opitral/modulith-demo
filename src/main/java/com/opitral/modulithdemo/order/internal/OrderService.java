@@ -1,10 +1,11 @@
 package com.opitral.modulithdemo.order.internal;
 
+import com.opitral.modulithdemo.order.api.OrderDto;
 import com.opitral.modulithdemo.payment.api.PaymentApi;
-import com.opitral.modulithdemo.payment.internal.Payment;
+import com.opitral.modulithdemo.payment.api.PaymentDto;
 import com.opitral.modulithdemo.order.api.OrderApi;
 import com.opitral.modulithdemo.product.api.ProductApi;
-import com.opitral.modulithdemo.product.internal.Product;
+import com.opitral.modulithdemo.product.api.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,15 +19,23 @@ class OrderService implements OrderApi {
     private final ProductApi productApi;
     private final PaymentApi paymentApi;
 
-    public List<Order> all() { return orderRepo.findAll(); }
+    public List<OrderDto> all() {
+        return orderRepo.findAll().stream().map(OrderService::toDto).toList();
+    }
 
     @Transactional
-    public Order place(Integer productId, int qty) {
-        Product p = productApi.get(productId);
-        Order o = Order.builder().product(p).quantity(qty).status(Order.Status.NEW).build();
+    public OrderDto place(Integer productId, int qty) {
+        ProductDto p = productApi.get(productId);
+        Order o = Order.builder().productId(p.id()).quantity(qty).status(Order.Status.NEW).build();
         o = orderRepo.save(o);
-        double amount = p.getPrice() * qty;
-        paymentApi.save(Payment.builder().orderRef(o).amount(amount).status(Payment.Status.CREATED).build());
-        return o;
+        double amount = p.price() * qty;
+        paymentApi.save(new PaymentDto(null, o.getId(), amount, PaymentDto.Status.CREATED));
+        return toDto(o);
     }
+
+    public static OrderDto toDto(Order o) {
+        return new OrderDto(o.getId(), o.getProductId(), o.getQuantity(), o.getStatus().toString());
+    }
+
+
 }

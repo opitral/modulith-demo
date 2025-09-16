@@ -1,6 +1,5 @@
 package com.opitral.modulithdemo.order.internal;
 
-import com.opitral.modulithdemo.product.internal.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -19,8 +18,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    private Product product;
+    private int productId;
 
     @Positive
     private int quantity;

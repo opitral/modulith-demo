@@ -1,6 +1,5 @@
 package com.opitral.modulithdemo.payment.internal;
 
-import com.opitral.modulithdemo.order.internal.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,8 +17,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne(optional = false)
-    private Order orderRef;
+    private int orderId;
 
     private double amount;
 
