@@ -1,0 +1,25 @@
+@startuml
+set separator none
+title ModulithDemoApplication
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Component>
+
+Container_Boundary("ModulithDemoApplication.ModulithDemoApplication_boundary", "ModulithDemoApplication", $tags="") {
+  Component(ModulithDemoApplication.ModulithDemoApplication.Api, "Api", $techn="Module", $descr="", $tags="", $link="")
+  Component(ModulithDemoApplication.ModulithDemoApplication.Order, "Order", $techn="Module", $descr="", $tags="", $link="")
+  Component(ModulithDemoApplication.ModulithDemoApplication.Payment, "Payment", $techn="Module", $descr="", $tags="", $link="")
+  Component(ModulithDemoApplication.ModulithDemoApplication.Product, "Product", $techn="Module", $descr="", $tags="", $link="")
+}
+
+Rel(ModulithDemoApplication.ModulithDemoApplication.Order, ModulithDemoApplication.ModulithDemoApplication.Payment, "uses", $techn="", $tags="", $link="")
+Rel(ModulithDemoApplication.ModulithDemoApplication.Api, ModulithDemoApplication.ModulithDemoApplication.Order, "uses", $techn="", $tags="", $link="")
+Rel(ModulithDemoApplication.ModulithDemoApplication.Api, ModulithDemoApplication.ModulithDemoApplication.Payment, "uses", $techn="", $tags="", $link="")
+Rel(ModulithDemoApplication.ModulithDemoApplication.Api, ModulithDemoApplication.ModulithDemoApplication.Product, "uses", $techn="", $tags="", $link="")
+Rel(ModulithDemoApplication.ModulithDemoApplication.Order, ModulithDemoApplication.ModulithDemoApplication.Product, "uses", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

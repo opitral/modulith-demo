@@ -1,0 +1,19 @@
+== ModulithDemoApplication
+plantuml::components.puml[,,format=svg]
+
+== Api
+plantuml::module-api.puml[,,format=svg]
+include::module-api.adoc[]
+
+== Order
+plantuml::module-order.puml[,,format=svg]
+include::module-order.adoc[]
+
+== Payment
+plantuml::module-payment.puml[,,format=svg]
+include::module-payment.adoc[]
+
+== Product
+plantuml::module-product.puml[,,format=svg]
+include::module-product.adoc[]
+

@@ -1,0 +1,15 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.opitral.modulithdemo.api`
+|Spring components
+|_Controllers_
+
+* `c.o.m.a.OrderHttp`
+* `c.o.m.a.PaymentHttp`
+* `c.o.m.a.ProductHttp`
+|Bean references
+|* `c.o.m.o.api.OrderApi` (in Order)
+* `c.o.m.p.api.PaymentApi` (in Payment)
+* `c.o.m.p.api.ProductApi` (in Product)
+|===

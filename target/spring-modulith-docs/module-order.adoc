@@ -1,0 +1,8 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.opitral.modulithdemo.order`
+|Bean references
+|* `c.o.m.p.api.ProductApi` (in Product)
+* `c.o.m.p.api.PaymentApi` (in Payment)
+|===
